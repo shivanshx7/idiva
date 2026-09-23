@@ -1,3 +1,4 @@
+![CI](https://github.com/shivanshx7/idiva/actions/workflows/ci.yml/badge.svg)
 # idiva
 
 Validate and parse Indian identity and business documents — PAN, Aadhaar, GSTIN, IFSC, UPI, and vehicle registration numbers — with real checksum algorithms where one exists, not just regex guessing.
