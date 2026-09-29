@@ -73,6 +73,13 @@ This validates structure and, where possible, checksum correctness. It does **no
 
 Most Node projects touching Indian user data end up writing PAN/GSTIN/IFSC regex inline, once, badly, with no test coverage. This exists so that check is correct once and reusable everywhere.
 
+What makes it actually worth installing over rolling your own regex:
+
+- Aadhaar and GSTIN aren't just format-checked — they're checksum-verified (Verhoeff, mod-36), which catches typos and transposed digits that a naive regex would silently accept
+- Zero runtime dependencies — nothing to audit, nothing to go stale
+- Never throws — bad input (`null`, numbers, garbage strings) just returns `false`/`null`, so it's safe to drop into a form validator without wrapping every call in try/catch
+- Small and honest — it tells you plainly what it can't verify (that a document is actually issued, not just well-formed), instead of overselling itself
+
 ## License
 
 MIT
